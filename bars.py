@@ -42,7 +42,8 @@ def get_console_args():
     parser.add_argument('--file_path', default='bars.json',
                         help="If you haven't got file bars.jason in the script"
                         "directory, specify the path for the file, or download"
-                        "it from link: : https://devman.org/fshare/1503831681/4/")
+                        "it from link:"
+                        "https://devman.org/fshare/1503831681/4/")
 
     return parser.parse_args()
 
