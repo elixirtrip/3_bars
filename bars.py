@@ -60,6 +60,10 @@ if __name__ == '__main__':
     except ValueError:
         sys.exit('Введено некорректное значение')
 
-    print('Самый большой бар', get_biggest_bar(data))
-    print('Самый маленький бар', get_smallest_bar(data))
-    print('Самый близкий бар', get_closest_bar(data, longitude, latitude))
+    print('{1}\nСамый большой бар:\n{0}'.format(
+        get_biggest_bar(data),  '--------------------------'))
+    print('{1}\nСамый маленький бар\n{0}'.format(
+        get_smallest_bar(data), '--------------------------'))
+    print('{1}\nСамый близкий бар\n{0}'.format(
+        get_closest_bar(data, longitude, latitude),
+        '--------------------------'))
