@@ -14,13 +14,13 @@ def load_data(filepath):
 
 
 def get_biggest_bar(data):
-    return (max(data, key=lambda x: x['properties']['Attributes']
-                ['SeatsCount'])['properties']['Attributes']['Name'])
+    return max(data, key=lambda x: x['properties']['Attributes']
+               ['SeatsCount'])
 
 
 def get_smallest_bar(data):
-    return (min(data, key=lambda x: x['properties']['Attributes']
-                ['SeatsCount'])['properties']['Attributes']['Name'])
+    return min(data, key=lambda x: x['properties']['Attributes']
+               ['SeatsCount'])
 
 
 def get_longitude_latitude(bar):
@@ -31,7 +31,12 @@ def get_closest_bar(data, longitude, latitude):
     return min(data, key=lambda x:
                math.hypot((get_longitude_latitude(x)[0] - longitude),
                           (get_longitude_latitude(x)[1] - latitude))
-               )['properties']['Attributes']['Name']
+               )
+
+
+def print_bar(masseg, data):
+    print('{0}\n{1}:\n{2}'.format(('-'*30), masseg, data
+                                  ['properties']['Attributes']['Name']))
 
 
 def get_console_args():
@@ -60,10 +65,6 @@ if __name__ == '__main__':
     except ValueError:
         sys.exit('Введено некорректное значение')
 
-    print('{1}\nСамый большой бар:\n{0}'.format(
-        get_biggest_bar(data),  '--------------------------'))
-    print('{1}\nСамый маленький бар\n{0}'.format(
-        get_smallest_bar(data), '--------------------------'))
-    print('{1}\nСамый близкий бар\n{0}'.format(
-        get_closest_bar(data, longitude, latitude),
-        '--------------------------'))
+    print_bar('Самый большой бар', get_biggest_bar(data))
+    print_bar('Самый маленький бар', get_smallest_bar(data))
+    print_bar('Самый близкий бар', get_closest_bar(data, longitude, latitude))
