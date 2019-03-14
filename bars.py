@@ -6,8 +6,11 @@ import sys
 
 def load_data(filepath):
     with open(filepath, 'r', encoding='utf-8') as read_file:
-        data = json.load(read_file)
-        return data['features']
+        try:
+            data = json.load(read_file)
+            return data['features']
+        except (FileNotFoundError, json.decoder.JSONDecodeError):
+            return None
 
 
 def get_biggest_bar(data):
